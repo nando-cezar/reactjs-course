@@ -4,6 +4,10 @@ function formatarNome(usuario){
   return usuario.nome + ' ' + usuario.sobrenome;
 }
 
+function HelloWorld(props){
+  return <h1>Olá mundo, {props.name} </h1>
+}
+
 const App = () => {
 
   let imagem = 'https://www.google.com.br/google.jpg';
@@ -17,6 +21,8 @@ const App = () => {
     <>
       <div>Meu nome é {formatarNome(usuario)}</div>
       <img src={imagem} />
+
+      <HelloWorld name="Luís Fernando"/>
     </>
   );
 }
