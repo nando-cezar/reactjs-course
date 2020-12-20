@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import styled from 'styled-components';
 
@@ -11,10 +11,30 @@ const Site = styled.div`
 
 const Botao = styled.button`
   font-size: 19px;
-  padding: 10ox 15px;
+  padding: 10px 15px;
+  border: 3px solid #FFF;
+  color: #FF0000;
+  background-color: #FFF;
+  margin: 5px;
+  border-radius: 5px;
   //background-color: ${props => props.color || "#00FF00"};
   background-color: ${props => props.ativo === true ? "#CCC" : "#00FF00"};
 `;
+
+const BotaoPequeno = styled(Botao)`
+  padding: 5px 10px;
+  font-size: 16px;
+`;
+
+const [contagem, setContagem] = useState(0);
+
+const botaoAction = () => {
+  setContagem(contagem ++);
+}
+
+const botaoPequenoAction = () => {
+  setContagem(contagem --);
+}
 /* function formatarNome(usuario){
   return usuario.nome + ' ' + usuario.sobrenome;
 }
@@ -55,14 +75,20 @@ const App = () => {
     <HelloWorld name={usuario.nome}/>
 
     <Avatar user={user}/>
+
+
+
+    <Botao color="#FF0000">Clique aqui!</Botao>
+    <Botao color="#0000FF">Clique aqui!</Botao>
+    <Botao>Clique aqui!</Botao>
+    <Botao ativo={true}>Clique aqui!</Botao>
+    <Botao ativo={false}>Clique aqui!</Botao>
   */ 
   return (
     <Site>
-      <Botao color="#FF0000">Clique aqui!</Botao>
-      <Botao color="#0000FF">Clique aqui!</Botao>
-      <Botao>Clique aqui!</Botao>
-      <Botao ativo={true}>Clique aqui!</Botao>
-      <Botao ativo={false}>Clique aqui!</Botao>
+      <div>{contagem}</div>
+      <Botao onClick={botaoAction}>Clique aqui!</Botao>
+      <BotaoPequeno onClick={botaoPequenoAction}>Clique aqui!</BotaoPequeno>
     </Site>
   );
 }
